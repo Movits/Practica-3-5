@@ -5,10 +5,10 @@ export class Persona {
         this.#nombre = nombre;
     }
 
-    darComida(perro) {
-        if (perro.tieneHambre()) {
+    darComida(animal) {
+        if (animal.tieneHambre()) {
             console.log("Aca esta la comida")
-            perro.alimentarseCon();
+            animal.alimentarseCon();
         } else {
             console.log("Guardo la comida")
         }

@@ -2,15 +2,17 @@ export class Animal {
     #nombre;
     #hambre;
     #hambreValor;
+    #sonido;
 
-    constructor(nombre = "def nombre"){
+    constructor(nombre = "def nombre", sonido = "def sonido"){
         this.#nombre = nombre;
         this.#hambreValor = this.getRandomInt(100)
+        this.#sonido = sonido;
         this.tieneHambre();
 
         setInterval(() => {
             this.#hambreValor--;
-            console.log(this.#hambreValor);
+            this.tieneHambre();
         }, 1000);
     };
 
@@ -21,18 +23,20 @@ export class Animal {
     tieneHambre() {
 
         if (this.#hambreValor <= 30) {
-            console.log("au au, humano quiero comida");
+            console.log(`${this.#sonido}, humano quiero comida`);
             this.#hambre = true;
+            return this.#hambre;
 
         } else if (this.#hambreValor > 30 && this.#hambreValor < 60) {
-            console.log("au au, en un rato tengo hambre");
+            console.log(`${this.#sonido}, en un rato tengo hambre`);
             this.#hambre = false;
+            return this.#hambre;
 
         } else {
-            console.log("au au, estoy lleno");
+            console.log(`${this.#sonido}, estoy lleno`);
             this.#hambre = false;
+            return this.#hambre;
         }
-        return this.#hambre;
     }
 
     alimentarseCon() {
