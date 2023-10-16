@@ -6,11 +6,11 @@ export class Persona {
     }
 
     darComida(animal) {
-        if (animal.tieneHambre()) {
-            console.log("Aca esta la comida")
+        if (animal.esHambriento()) {
+            console.log("Aca esta la comida");
             animal.alimentarseCon();
         } else {
-            console.log("Guardo la comida")
+            console.log("Guardo la comida");
         }
     }
 }
