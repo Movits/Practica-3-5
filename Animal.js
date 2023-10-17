@@ -41,6 +41,7 @@ export class Animal {
         let alimentacion = this.getRandomInt(21) + 30;
         this.#hambreValor = Math.min(this.#hambreValor + alimentacion, 100);
         console.log(`${this.#nombre} ahora tiene un valor de hambre de ${this.#hambreValor}`);
+        console.log("-------------------");
     }
     
 }
