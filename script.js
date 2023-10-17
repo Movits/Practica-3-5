@@ -6,8 +6,13 @@ import { Pez } from "./Pez.js";
 const personas = [new Persona("Roberto")];
 const animales = [new Perro("Boris"), new Gato("Flake"), new Pez("Nemo")];
 
-class Interaccion {
+class InteraccionAnimalPersona {
     constructor() {
+        this.revisarYAlimentarAnimales();
+        setInterval(() => this.revisarYAlimentarAnimales(), 1000);
+    }
+
+    revisarYAlimentarAnimales() {
         personas.forEach(persona => {
             animales.forEach(animal => {
                 persona.darComida(animal);
@@ -16,4 +21,4 @@ class Interaccion {
     }
 }
 
-new Interaccion();
+new InteraccionAnimalPersona();

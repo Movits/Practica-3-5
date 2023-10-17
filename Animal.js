@@ -8,11 +8,11 @@ export class Animal {
         this.#nombre = nombre;
         this.#hambreValor = this.getRandomInt(100)
         this.#sonido = sonido;
-        this.tieneHambre();
+        this.actualizarEstadoHambre();
 
         setInterval(() => {
             this.#hambreValor--;
-            this.tieneHambre();
+            this.actualizarEstadoHambre();
         }, 1000);
     };
 
@@ -24,24 +24,23 @@ export class Animal {
         return this.#hambre;
     }
     
-    tieneHambre() {
+    actualizarEstadoHambre() {
         let estadoAnteriorHambre = this.#hambre;
-    
-        if (this.#hambreValor <= 30) {
-            this.#hambre = true;
-            if (!estadoAnteriorHambre) console.log(`${this.#sonido}, humano quiero comida`);
-        } else if (this.#hambreValor > 30 && this.#hambreValor < 60) {
-            this.#hambre = false;
-            if (estadoAnteriorHambre) console.log(`${this.#sonido}, en un rato tengo hambre`);
-        } else {
-            this.#hambre = false;
-            if (estadoAnteriorHambre || this.#hambreValor == 60) console.log(`${this.#sonido}, estoy lleno`);
+        this.#hambre = this.#hambreValor <= 30;
+
+        if (this.#hambre && !estadoAnteriorHambre) {
+            console.log(`${this.#sonido}, humano quiero comida`);
+        } else if (this.#hambreValor > 30 && this.#hambreValor < 60 && estadoAnteriorHambre) {
+            console.log(`${this.#sonido}, en un rato tengo hambre`);
+        } else if ((this.#hambreValor >= 60 && this.#hambreValor <= 100) && estadoAnteriorHambre) {
+            console.log(`${this.#sonido}, estoy lleno`);
         }
     }
 
     alimentarseCon() {
-        this.#hambreValor += 50;
+        let alimentacion = this.getRandomInt(21) + 30;
+        this.#hambreValor = Math.min(this.#hambreValor + alimentacion, 100);
         console.log(`${this.#nombre} ahora tiene un valor de hambre de ${this.#hambreValor}`);
     }
-
+    
 }

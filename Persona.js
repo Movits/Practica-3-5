@@ -7,10 +7,8 @@ export class Persona {
 
     darComida(animal) {
         if (animal.esHambriento()) {
-            console.log("Aca esta la comida");
+            console.log("Aca esta la comida")
             animal.alimentarseCon();
-        } else {
-            console.log("Guardo la comida");
         }
     }
 }
